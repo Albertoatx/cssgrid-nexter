@@ -36,3 +36,45 @@ body {
   line-height: 1.6;
   color: $color-grey-dark-2;
 }
+
+// Overall GRID layout
+// ROW tracks we want:
+//   Row1 (Header + Realtors)    - 80vh        (row height 80% of the viewport height)
+//   Row2 (Features)             - min-content (row height to adapt to the content)
+//   Row3 (Story)                - 40vw        (row height 40% of the viewport width)
+//   Row4 (Homes)                - min-content (row height to adapt to the content)
+//   Row5 (Gallery)              - min-content (row height to adapt to the content)
+//   Row6 (Footer)               - min-content (row height to adapt to the content)
+// 
+// COLUMN tracks we want:
+//   Column1 (Sidebar)           - 8rem
+//   Column2 (Bleed section)     - minmax(5rem, 1fr) - at least 5rem width, max 1fr of the available space
+//   Column3 (1st of 8 col grid) - minmax(min-content, 14rem) - never bellow the min-content, max 14 rem
+//   Column4 (2nd of 8 col grid) - minmax(min-content, 14rem) 
+//   Column5 (3rd of 8 col grid) - minmax(min-content, 14rem) 
+//   Column6 (4th of 8 col grid) - minmax(min-content, 14rem) 
+//   Column7 (5th of 8 col grid) - minmax(min-content, 14rem) 
+//   Column8 (6th of 8 col grid) - minmax(min-content, 14rem) 
+//   Column9 (7th of 8 col grid) - minmax(min-content, 14rem) 
+//   Column10(8th of 8 col grid) - minmax(min-content, 14rem) 
+//   Column11(Bleed section)     - minmax(5rem, 1fr) - at least 5rem width, max 1fr of the available space
+// NOTE: 8 col grid centered in the viewport: each column 1140px /8col = 140px = 14rem
+.container {
+  display: grid;
+  grid-template-rows: 80vh min-content 40vw repeat(3, min-content);
+  grid-template-columns: [sidebar-start] 
+                         8rem 
+                         [sidebar-end full-start] 
+                         minmax(5rem, 1fr) 
+                         [center-start] 
+                         repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) 
+                         [center-end] 
+                         minmax(5rem, 1fr) 
+                         [full-end];
+
+  // Only for development purposes
+  & > * {
+    padding: 40px;
+    font-size: 2rem;
+  }
+}
