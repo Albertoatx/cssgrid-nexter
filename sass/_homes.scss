@@ -12,16 +12,64 @@
 .home {
   background-color: $color-grey-light-1;
 
+  display: grid;  // 'home' card Grid Item to be also a Grid Container
+  grid-template-columns: repeat(2, 1fr); // 2 columns of same size
+  grid-row-gap: 3.5rem;     
+
   &__img {
     width: 100%;
+
+    grid-row: 1 / 2;         // must specify it: want 'img' in the same row as 'like'
+    grid-column: 1 / span 2; // image to span 2 columns
+    z-index: 1;
   }
 
-  &__like {
+  &__like {                 // Use overlapping to place 'like' icon on top of the right grid cell of 'img'
+    grid-row: 1 / 2;        // Overlapping: Place Grid item at row 1   
+    grid-column: 2 / 3;     // Overlapping: Place Grid item at  column 2
+    z-index: 2;             // Overlapping: assure 'like' icon is always on top the card 'img'
+    justify-self: end;      // align this Grid item horizontally inside its Grid area (1 grid cell) 
+    margin: 1rem;
 
+    fill: $color-primary;
+    width: 2.8rem;
+    height: 2.8rem;
+    transition: all .2s;
+
+    &:hover {
+      fill: $color-primary-dark;
+      transform: scale(1.25); 
+      cursor: pointer;
+
+      // border the svg (icon heart)
+      stroke: $color-secondary;
+      stroke-width: 2px;
+      stroke-dasharray: 1,1;
+      stroke-linejoin: round; 
+    }
   }
 
   &__name {
+    grid-row: 1 / 2;         // Overlapping: Place Grid item at row 1   
+    grid-column: 1 / span 2; // make this Grid item (name) occupy 2 columns (grid area = 2 grid cells)
+    z-index: 2;              // Overlapping: assure 'name' is always on top the card 'img'
+    width: 80%;              // want this Grid item (name) to be smaller than 2 columns 
+    justify-self: center;    // align this Grid item horizontally inside its Grid area (2 grid cells)
+    align-self: end;         // align this Grid item vertically inside its Grid area (2 grid cells)
+    transform: translateY(50%);// move it down 50% of the height of the element (to place it at center)
 
+    font-family: $font-display;
+    font-size: 1.6rem;
+    font-weight: 400;
+    text-align: center;
+    padding: 1.25rem;
+    background-color: $color-secondary;
+    color: #fff;
+  }
+
+  &__location, 
+  &__rooms {
+    margin-top: 2.5rem;
   }
 
   &__location, 
@@ -29,15 +77,22 @@
   &__area,
   &__price {
 
+    font-size: 1.5rem;
+    margin-left: 2rem;
+
+    display: flex;       // make all of them Flebox containers
+    align-items: center; // Center all Flexbox items on the cross axis (in this case Y axis)  
+
     svg {
       fill: $color-primary;
       width: 2rem;
       height: 2rem;
+      margin-right: 1rem;
     }
 
-    p {
-
-    }
   }
 
+  .btn {
+    grid-column: 1 / span 2;
+  }
 }
