@@ -8,7 +8,7 @@
   //grid-template-columns: repeat(3, 1fr);
   grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr)); // make it responsive
   grid-gap: 6rem;
-  align-items: start;             // align all its grid items (.feature) along column axis (vertical)
+  align-items: start;             // align every grid item (.feature) vertically inside its grid cell/area
 }
 
 .feature {
