@@ -1,4 +1,80 @@
 .footer {
   background-color: $color-secondary;
   grid-column: full-start / full-end;
+  padding: 8rem;
+
+  // <ul>
+  &__list {
+    list-style: none;
+
+    display: grid;      // make '__list' a Grid Container with a responsive nº of columns (auto-fit)
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); 
+    grid-gap: 2rem;
+    align-items: center; // align all its grid items (__item) vertically inside its grid area (1 cell)
+  }
+
+  // <li>
+  // &__item {
+
+  // }
+
+  // <a>
+  &__link {
+
+    &:link,
+    &:visited {
+      text-decoration: none;
+      text-transform: uppercase;
+      text-align: center;
+      font-size: 1.4rem;
+      font-family: $font-display;
+      color: #fff;  
+
+      display: block;              // to be able to apply top and bottom 'padding'
+      padding: 1.5rem;
+      transition: all .2s;
+    }
+
+    &:hover,
+    &:active {
+      background-color: rgba(#fff, .05); // small alpha to be almost transparent
+      box-shadow: 0 .5rem .5rem rgba(#000, .1);
+      transform: translateY(-3px);
+    }
+  }
+}
+
+// <p>
+.copyright {
+  font-size: 1.4rem;
+  color: $color-grey-light-2;
+
+  width: 70%;
+  margin-top: 5rem;
+  margin-left: auto;    // to center copyright inside its parent container
+  margin-right: auto;   // to center copyright inside its parent container
+  text-align: center;   // to center the text inside copyright
+
+  &__link {
+
+    &:link,
+    &:visited {
+      text-decoration: none;
+      text-transform: uppercase;
+      text-align: center;
+      font-size: 1.4rem;
+      font-family: $font-display;
+      color: $color-grey-light-1;  
+  
+      display: inline-block; // for the animation: 'inline' elements are not transformable
+      padding: .3rem;
+      transition: all .2s;
+    }
+  
+    &:hover,
+    &:active {
+      background-color: rgba(#fff, .05); // small alpha to be almost transparent
+      transform: rotate(-2deg);
+    }
+  }
 }
