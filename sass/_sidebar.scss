@@ -2,4 +2,38 @@
   background-color: $color-primary;
   grid-row: 1 / -1; // sidebar to span multiple rows: from the beginning to the end of the Grid
   grid-column: sidebar-start / sidebar-end;
+
+  display: flex;
+  justify-content: center;
+}
+
+.nav__btn {
+  border: none;
+  border-radius: 0;
+
+  background-color: #fff;
+  height: 2px;
+  width: 4.5rem;
+  margin-top: 4rem; 
+
+  &::before, &::after {
+    content: "";                  // to make them visible
+    display: block;
+
+    background-color: #fff;
+    height: 2px;
+    width: 4.5rem;
+  }
+
+  &::before {
+    transform: translateY(-1.5rem); // move it up
+  }
+
+  &::after {
+    transform: translateY(1.3rem); // move it down
+  }
+
+  &:focus {
+    outline: none;
+  } 
 }
