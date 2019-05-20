@@ -6,6 +6,9 @@
 
 .heading-1 {
   @extend %heading;
+  font-size: 4.5rem;
+  color: $color-grey-light-1;
+  line-height: 1; // if we have 2 lines of text we don't want all the spacing between the 2 lines
 }
 
 .heading-2 {
