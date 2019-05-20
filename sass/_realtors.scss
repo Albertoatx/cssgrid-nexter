@@ -1,4 +1,31 @@
 .realtors {
   background-color: $color-secondary;
   grid-column: col-start 7 / full-end;
+  padding: 3rem;
+
+  display: grid;          // convert the 'realtors' Grid item into a Grid container
+  grid-row-gap: 2rem;
+  justify-content: center;// align entire tracks horizontally relative to its parent container(df:'start')
+  align-content: center;  // align entire tracks vertically relative to its parent container (df: 'start')
+  justify-items: center;  // align all its Grid items horizontally inside their Grid area (1 grid cell)
+
+  &__list {
+    display: grid;       // Grid container
+    grid-template-columns: min-content max-content; // col1: min-content, col2: max-content 
+    grid-column-gap: 2rem;
+    grid-row-gap: 5vh;    // Spacing to change whenever we change the height of the viewport
+    align-items: center;  // align all its Grid items vertically inside their Grid area (1 grid cell)
+  }
+
+  &__img {
+    display: block;       // always best to display images as block
+    width: 7rem;
+    border-radius: 50%;
+  }
+
+  &__sold {
+    text-transform: uppercase;
+    color: $color-grey-light-2;
+    margin-top: -3px;     // move it up a little  (another option: use a transformY)
+  }
 }
