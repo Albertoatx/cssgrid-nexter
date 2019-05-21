@@ -5,6 +5,14 @@
 
   display: flex;
   justify-content: center;
+
+  @media only screen and (max-width: $bp-large) {
+    grid-row: 1 / span 1;      // 1 row
+    grid-column: 1 / -1;       // all columns
+
+    justify-content: flex-end; // place its flex items (nav__btn) on the main axis (X axis)
+    align-items: center;       // place its flex items (nav__btn) on the cross axis (Y axis)
+  }
 }
 
 .nav__btn {
@@ -36,4 +44,17 @@
   &:focus {
     outline: none;
   } 
+
+  @media only screen and (max-width: $bp-large) {
+    margin-top: 0; 
+    margin-right: 3rem;
+
+    &::before {
+      transform: translateY(-1.2rem); // move it up
+    }
+  
+    &::after {
+      transform: translateY(1.0rem); // move it down
+    }
+  }
 }

@@ -8,7 +8,7 @@
   padding: 4rem 8rem 8rem 8rem;
 
   display: grid;           // convert the 'header' Grid item also into a Grid container
-  grid-template-rows: 1fr min-content 6rem 1fr; 
+  grid-template-rows: 1fr min-content minmax(6rem, min-content) 1fr; 
   //grid-template-columns: max-content; // NOT use all available space: just the size to fit the content
   grid-template-columns: minmax(min-content, max-content);
   grid-row-gap: 1.5rem;
@@ -46,13 +46,15 @@
     grid-template-columns: repeat(4, 1fr);    // Grid to have 4 equally sized columns
     grid-column-gap: 3rem;
     justify-items: center; // align all its Grid items horizontally inside their Grid area (1 grid cell)
+    align-items: center;   // align all its Grid items vertically inside each Grid area (1 grid cell) 
 
     // With flexbox
     //display: flex;
     //justify-content: space-around;
 
     img {
-      height: 2.5rem;
+      max-height: 2.5rem;
+      max-width: 100%;         // to scale properly. usually 100% but it can be less if height < 2.5rem
       filter: brightness(75%); // Make images slightly darker 
     }
   }
