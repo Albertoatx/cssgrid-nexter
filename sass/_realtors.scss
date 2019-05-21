@@ -9,12 +9,24 @@
   align-content: center;  // align entire tracks vertically relative to its parent container (df: 'start')
   justify-items: center;  // align all its Grid items horizontally inside their Grid area (1 grid cell)
 
+  @media only screen and (max-width: $bp-medium) {
+    grid-column: full-start / full-end;  // realtors to fill up the entire row
+  }
+
   &__list {
     display: grid;       // Grid container
     grid-template-columns: min-content max-content; // col1: min-content, col2: max-content 
     grid-column-gap: 2rem;
     grid-row-gap: 5vh;    // Spacing to change whenever we change the height of the viewport
     align-items: center;  // align all its Grid items vertically inside their Grid area (1 grid cell)
+
+    @media only screen and (max-width: $bp-medium) {
+      grid-template-columns: repeat(3, min-content max-content);// place Realtors items side by side
+    }
+
+    @media only screen and (max-width: $bp-small) {
+      grid-template-columns: min-content max-content;   // place Realtors items top to bottom
+    }
   }
 
   &__img {

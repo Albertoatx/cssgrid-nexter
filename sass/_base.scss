@@ -17,10 +17,10 @@ $font-display: 'Josefin Sans', sans-serif;
 // RESPONSIVE BREAKPOINTS
 // Sass variables needed for media queries breakpoints
 $bp-largest: 75em;       // 1200px / 16px
-$bp-large: 62.5em;      // 1000px / 16px
-//$bp-small: 43.75em;       // 700px / 16px
+$bp-large: 62.5em;       // 1000px / 16px
+$bp-medium: 50em;        // 800px / 16px
+$bp-small: 37.5em;       // 600px / 16px
 //$bp-smallest: 31.25em;    // 500px / 16px
-//$bp-xsmallest: 26.25em;   // 420px / 16px
 
 
 // GLOBAL RESET
@@ -84,10 +84,21 @@ body {
                          minmax(5rem, 1fr) 
                          [full-end];
 
-
-  // To move the sidebar to the top: add a new row (6rem) + remove the 1st column                      
+  // LARGE screens (1000px)            
+  // Move the Sidebar to the top: add a new row (6rem) + remove the 1st column                      
   @media only screen and (max-width: $bp-large) { 
+
+    // ROW tracks:
+    //   Row1 (Sidebar)              - 6rem        
+    //   Row2 (Header + Realtors)    - 80vh        (row height 80% of the viewport height)
+    //   Row3 (Features)             - min-content (row height to adapt to the content)
+    //   Row4 (Story)                - 40vw        (row height 40% of the viewport width)
+    //   Row5 (Homes)                - min-content (row height to adapt to the content)
+    //   Row6 (Gallery)              - min-content (row height to adapt to the content)
+    //   Row7 (Footer)               - min-content (row height to adapt to the content) 
     grid-template-rows: 6rem 80vh min-content 40vw repeat(3, min-content);
+
+    // COLUMN tracks: Column1 (Bleed section), Column2..9 (8 col grid), Column10 (Bleed section)
     grid-template-columns:  
       [full-start] 
       minmax(5rem, 1fr) 
@@ -96,6 +107,26 @@ body {
       [center-end] 
       minmax(5rem, 1fr) 
       [full-end];
+  } 
+
+  // MEDIUM screens (800px)
+  // Header + Sidebar to fill up entire viewport. 
+  // Move Realtors to a new row (min-content).
+  // DON'T want Story to be 40vw: we want its content to dictate its size (min-content)
+  @media only screen and (max-width: $bp-medium) { 
+    
+    // ROW tracks:
+    //   Row1 (Sidebar)              - 6rem 
+    //   Row2 (Header)               - calc(100vh - 6rem)        
+    //   Row3 (Realtors)             - min-content (row height to adapt to the content)
+    //   Row4 (Features)             - min-content (row height to adapt to the content)
+    //   Row5 (Story content)        - min-content (row height to adapt to the content)
+    //   Row7 (Story pictures)       - min-content (row height to adapt to the content)
+    //   Row7 (Homes)                - min-content (row height to adapt to the content)
+    //   Row8 (Gallery)              - min-content (row height to adapt to the content)
+    //   Row9 (Footer)               - min-content (row height to adapt to the content) 
+    grid-template-rows: 6rem calc(100vh - 6rem);
+  //grid-template-rows: 6rem calc(100vh - 6rem) repeat(7, min-content); // THIS IS THE SAME!
   } 
 
   // Only for development purposes
